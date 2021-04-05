@@ -1,0 +1,41 @@
+.Btn{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    color:black;
+    margin-right: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.Btn:focus {
+    outline: none;
+}
+
+.Btn:active {
+    box-shadow: inset 2px 2px 1px rgba(0,0,0, .3);
+}
+
+.Btn:disabled {
+    background: #ccc;
+    color: black;
+    cursor: not-allowed;
+}
+
+.eror{
+    background-color: rgba(240,87,108,1);
+    color: #000;
+}
+
+.success{
+    background-color: rgba(161,240,69,1);
+    color:#000;
+}
+
+.primary{
+    background-color: #2884f6;
+    color: #fff;
+
+}

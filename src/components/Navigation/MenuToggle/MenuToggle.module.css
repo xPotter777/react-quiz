@@ -1,0 +1,18 @@
+.Menu{
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    font-size: 20px;
+    cursor:pointer;
+    color: aliceblue;
+    z-index: 100;
+    transition: all .22s ease-in;
+}
+
+.Menu:hover{
+    opacity: .7;
+}
+
+.Menu.open{
+    left: 320px;
+}
