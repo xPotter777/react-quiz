@@ -4,8 +4,9 @@ import classes from './Auth.module.css'
 import Btn from '../../UI/Button/Button'
 import Input from '../../UI/Input/Input'
 import is from 'is_js'
-import axios from "axios";
 import {connect} from "react-redux";
+import {auth} from "../../store/Actions/auth";
+
 
 
  class Auth extends Component{
@@ -40,34 +41,17 @@ import {connect} from "react-redux";
         }
     }}
 
-    loginHandler = async () => {
-    const authData = {
-        email:this.state.formControls.email.value,
-        password:this.state.formControls.password.value,
-        returnSecureToken: true
-    }
-    try{
-        const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyBBrCnAG2ucbSTgGds_6lZOs7k0vHpBJMg', authData)
-        console.log(response.data)
-    }
-    catch (e) {
-        console.log(e)
-    }
+    loginHandler = () => {
+        this.props.auth
+        (this.state.formControls.email.value, this.state.formControls.password.value, true)
     }
 
-    registerHandler = async () => {
-        const authData = {
-            email: this.state.formControls.email.value,
-            password: this.state.formControls.password.value,
-            returnSecureToken: true
-        }
-        try {
-            const response = await axios.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyBBrCnAG2ucbSTgGds_6lZOs7k0vHpBJMg', authData)
+    registerHandler = () => {
+        this.props.auth(
+            this.state.formControls.email.value,
+            this.state.formControls.password.value,
+            false)
 
-            console.log(response.data)
-        } catch (e) {
-            console.log(e)
-        }
     }
 
     
@@ -164,4 +148,12 @@ import {connect} from "react-redux";
         )
     }
 }
-export default connect()(Auth)
+
+function  mapDispatchToProps(dispatch) {
+     return {
+    auth: (email,password, isLogin) => dispatch(auth(email, password, isLogin))
+
+     }
+ }
+
+export default connect(null,mapDispatchToProps)(Auth)

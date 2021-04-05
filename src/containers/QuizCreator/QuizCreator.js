@@ -78,7 +78,7 @@ class QuizCreator extends Component {
 
     }
 
-    createQuizHandler =  event => {
+    createQuizHandler = () => {
 
 
         this.setState({
@@ -196,7 +196,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-    return{
+    return {
     createQuizQuestion: item => dispatch(createQuizQuestion(item)),
     finishCreateQuiz: () => dispatch(finishCreateQuiz())
     }
